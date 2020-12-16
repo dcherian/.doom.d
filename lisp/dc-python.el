@@ -69,7 +69,6 @@
 ;;          (python-mode . anaconda-eldoc-mode)))
 
 (use-package! python-pytest
-  :defer
   :bind (:map python-mode-map
          ("C-c C-t" . python-pytest-dispatch)
          )
@@ -174,7 +173,7 @@
 	  (:hlines . "no")
 	  (:tangle . "yes")
 	  (:eval . "never-export")))
-  (org-babel-jupyter-override-src-block "python")
+  ;; (org-babel-jupyter-override-src-block "python")
 
     ;; Set better default settings for org-babel.
   ;; (setf (alist-get :async org-babel-default-header-args:jupyter-python) "yes")
