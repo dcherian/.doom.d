@@ -11,10 +11,10 @@
         company-show-numbers t
         company-tooltip-align-annotations t
         company-require-match nil
-	company-dabbrev-code-other-buffers t
+        company-dabbrev-code-other-buffers t
         company-dabbrev-downcase nil
-	company-dabbrev-ignore-case nil
-	company-idle-delay 0.5)
+        company-dabbrev-ignore-case nil
+        company-idle-delay 0.5)
 
   (define-key company-active-map [tab] 'company-complete-common-or-cycle)
   (define-key company-active-map (kbd "TAB") 'company-complete-common-or-cycle)
@@ -24,14 +24,14 @@
   (setq company-transformers '(company-sort-by-occurrence))
 
   (set-face-attribute 'company-tooltip nil
-		      :inherit 'tooltip)
+                      :inherit 'tooltip)
 
   (setq company-backends
-	'(company-capf
-	  company-files
-	  (company-dabbrev-code company-gtags company-etags
-				company-keywords)
-	  company-dabbrev))
+        '(company-capf
+          company-files
+          (company-dabbrev-code company-gtags company-etags
+                                company-keywords)
+          company-dabbrev))
 
   )
 

@@ -95,9 +95,9 @@
 
 ;; (use-package! undo-tree
 ;;   :bind (:map dc-bindings-map
-;; 	      ("M--" . undo-tree-undo)
-;; 	      ("M-=" . undo-tree-redo)
-;; 	      ("M-u" . undo-tree-visualize))
+;;            ("M--" . undo-tree-undo)
+;;            ("M-=" . undo-tree-redo)
+;;            ("M-u" . undo-tree-visualize))
 ;;   :config
 ;;   (global-undo-tree-mode t))
 
@@ -115,8 +115,8 @@
   :defer
   :bind (:map dc-bindings-map
          ("C-c C-f" . counsel-projectile-find-file-dwim)
-        ;;	      :map projectile-command-map
-        ;;	      ("s" . counsel-projectile-ag)
+        ;;            :map projectile-command-map
+        ;;            ("s" . counsel-projectile-ag)
          )
   :config
   (setq projectile-completion-system 'counsel
@@ -140,27 +140,27 @@
   (setq org-startup-indented t
         org-startup-with-inline-images "inlineimages"
         org-hide-leading-stars t
-;; 	org-return-follows-link t
-;; 	org-footnote-define-inline t
-;; 	org-special-ctrl-a/e t
-;; 	org-special-ctrl-k t
-;; 	org-ellipsis "…"
-;; 	org-log-done t
-;; 	org-catch-invisible-edits 'smart
-;; 	org-list-allow-alphabetical t
-;; 	org-hide-emphasis-markers nil
+;;      org-return-follows-link t
+;;      org-footnote-define-inline t
+;;      org-special-ctrl-a/e t
+;;      org-special-ctrl-k t
+;;      org-ellipsis "…"
+;;      org-log-done t
+;;      org-catch-invisible-edits 'smart
+;;      org-list-allow-alphabetical t
+;;      org-hide-emphasis-markers nil
         org-image-actual-width 680
-;; 	org-export-in-background nil
+;;      org-export-in-background nil
 ;;    org-src-fontify-natively 1
-;; 	org-src-tab-acts-natively 1
-;; 	org-src-preserve-indentation t
-;; 	org-pretty-entities nil
-;; 	org-pretty-entities-include-sub-superscripts t
+;;      org-src-tab-acts-natively 1
+;;      org-src-preserve-indentation t
+;;      org-pretty-entities nil
+;;      org-pretty-entities-include-sub-superscripts t
         org-export-dispatch-use-expert-ui t
         org-export-time-stamp-file nil
-;; 	fill-column 90
-;; 	org-src-window-setup 'current-window
-;; 	org-export-time-stamp-file nil
+;;      fill-column 90
+;;      org-src-window-setup 'current-window
+;;      org-export-time-stamp-file nil
         org-imenu-depth 3
         )
 

@@ -11,12 +11,12 @@
 (use-package! python
   :defer
   :bind ((:map python-mode-map
-	       ("C-c C-c" . python-shell-run-region-or-line)
-	       ("C-c C-b" . python-shell-send-buffer)
-	       ("C-c C-v" . flycheck-list-errors)
-	       ;; ("M-<left>" . elpy-nav-indent-shift-left)
-	       ;; ("M-<right>" . elpy-nav-indent-shift-right)
-	       ))
+               ("C-c C-c" . python-shell-run-region-or-line)
+               ("C-c C-b" . python-shell-send-buffer)
+               ("C-c C-v" . flycheck-list-errors)
+               ;; ("M-<left>" . elpy-nav-indent-shift-left)
+               ;; ("M-<right>" . elpy-nav-indent-shift-right)
+               ))
   :config
   (setq-default python-indent-offset 4)
   (setq python-shell-prompt-detect-failure-warning nil
@@ -87,16 +87,16 @@
   :after (:all org python)
   :commands (dc/jupyter-faces)
   :bind (:map jupyter-repl-mode-map
-	      ("<up>" . jupyter-repl-history-previous)
-	      ("<down>" . jupyter-repl-history-next)
-	      :map dc-bindings-map
-	      ("C-c p" . python-shell-run-region-or-line)
-	      ("C-c t" . jupyter-repl-pop-to-buffer)
-	      ("C-<tab>" . org-hide-block-toggle-maybe)
-	      :map org-mode-map
-	      ("C-c C-v C-i" . jupyter-repl-interrupt-kernel)
-	      :map inferior-python-mode-map
-	      ("C-c C-v C-i" . jupyter-repl-interrupt-kernel))
+              ("<up>" . jupyter-repl-history-previous)
+              ("<down>" . jupyter-repl-history-next)
+              :map dc-bindings-map
+              ("C-c p" . python-shell-run-region-or-line)
+              ("C-c t" . jupyter-repl-pop-to-buffer)
+              ("C-<tab>" . org-hide-block-toggle-maybe)
+              :map org-mode-map
+              ("C-c C-v C-i" . jupyter-repl-interrupt-kernel)
+              :map inferior-python-mode-map
+              ("C-c C-v C-i" . jupyter-repl-interrupt-kernel))
   ;; :hook ((circadian-after-load-theme jupyter-repl-mode) . dc/jupyter-faces)
   :init
   ; * eldoc integration
@@ -142,18 +142,18 @@
 
   (require 'jupyter-tramp)
   (setq jupyter-repl-echo-eval-p t
-	jupyter-api-authentication-method "Token based")
+        jupyter-api-authentication-method "Token based")
 
   (defun dc/jupyter-faces ()
     (interactive)
     (set-face-attribute 'jupyter-repl-traceback nil
-			:background nil)
+                        :background nil)
 
     (set-face-attribute 'jupyter-repl-input-prompt nil
-			:foreground "#b58900")
+                        :foreground "#b58900")
 
     (set-face-attribute 'jupyter-repl-output-prompt nil
-			:foreground "#dc322f")))
+                        :foreground "#dc322f")))
 
 
 ;; This second `use-package' declaration only demanded after both jupyter and python
@@ -162,17 +162,17 @@
 (use-package! ob
   :after (:all jupyter python)
   :bind (:map python-mode-map
-	      ("s-g" . dc/org-babel-execute-named-block))
+              ("s-g" . dc/org-babel-execute-named-block))
   :config
   (setq org-babel-default-header-args:jupyter-python
-	'((:session . "py")
-	  (:exports . "results")
-	  (:kernel . "python3")
-	  (:cache .   "no")
-	  (:noweb . "yes")
-	  (:hlines . "no")
-	  (:tangle . "yes")
-	  (:eval . "never-export")))
+        '((:session . "py")
+          (:exports . "results")
+          (:kernel . "python3")
+          (:cache .   "no")
+          (:noweb . "yes")
+          (:hlines . "no")
+          (:tangle . "yes")
+          (:eval . "never-export")))
   ;; (org-babel-jupyter-override-src-block "python")
 
     ;; Set better default settings for org-babel.

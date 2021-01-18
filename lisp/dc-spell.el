@@ -14,7 +14,7 @@
       ;; Support Camel Case spelling check (tested with aspell 0.6)
       (setq args (list "--sug-mode=ultra" "--lang=en_GB"))
       (if run-together
-	  (setq args (append args '("--run-together" "--run-together-limit=5" "--run-together-min=2")))))
+          (setq args (append args '("--run-together" "--run-together-limit=5" "--run-together-min=2")))))
      ((string-match "hunspell$" ispell-program-name)
       ;; Force the English dictionary for hunspell
       (setq args "-d en_GB")))
@@ -32,7 +32,7 @@
   ;; if we use different dictionary
   (setq ispell-local-dictionary "en_GB")
   (setq ispell-local-dictionary-alist
-	'(("en_GB" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_GB") nil utf-8))))
+        '(("en_GB" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_GB") nil utf-8))))
  (t (setq ispell-program-name nil)))
 
 ;; ispell-cmd-args is useless, it's the list of *extra* arguments we will append to the ispell process when "ispell-word" is called.

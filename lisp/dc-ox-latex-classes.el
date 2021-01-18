@@ -1,14 +1,14 @@
 
 (add-to-list 'org-latex-classes
-	     '("dcbeamer"
-	       "[NO-DEFAULT-PACKAGES]"
-	       ("\\section{%s}" . "\\section*{%s}")
-	       ("\\subsection{%s}" . "\\subsection*{%s}")
-	       ("\\subsubsection{%s}" . "\\subsubsection*{%s}")))
+             '("dcbeamer"
+               "[NO-DEFAULT-PACKAGES]"
+               ("\\section{%s}" . "\\section*{%s}")
+               ("\\subsection{%s}" . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")))
 
 (add-to-list 'org-latex-classes
-	     '("dcnotebook"
-	       "%&~/tools/latex/preamble-memoir
+             '("dcnotebook"
+               "%&~/tools/latex/preamble-memoir
 [NO-DEFAULT-PACKAGES]
 [NO-PACKAGES]
 [EXTRA]
@@ -22,15 +22,15 @@
 \\counterwithout{section}{chapter}
 \\counterwithout{figure}{chapter}
 \\counterwithout{table}{chapter}"
-	       ("\\section{%s}" . "\\section*{%s}")
-	       ("\\subsection{%s}" . "\\subsection*{%s}")
-	       ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-	       ("\\paragraph{%s}" . "\\paragraph*{%s}")
-	       ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+               ("\\section{%s}" . "\\section*{%s}")
+               ("\\subsection{%s}" . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+               ("\\paragraph{%s}" . "\\paragraph*{%s}")
+               ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 
     (add-to-list 'org-latex-classes
-		 '("dcarticle"
-		   "%&~/tools/latex/preamble-memoir
+                 '("dcarticle"
+                   "%&~/tools/latex/preamble-memoir
 \\usepackage{fontspec}
 \\usepackage{unicode-math}
 \\setromanfont[Ligatures=TeX]{TeX Gyre Pagella}
@@ -45,26 +45,26 @@
 \\counterwithout{figure}{chapter}
 \\counterwithout{table}{chapter}
 "
-		   ("\\section{%s}" . "\\section*{%s}")
-		   ("\\subsection{%s}" . "\\subsection*{%s}")
-		   ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-		   ("\\paragraph{%s}" . "\\paragraph*{%s}")
-		   ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+                   ("\\section{%s}" . "\\section*{%s}")
+                   ("\\subsection{%s}" . "\\subsection*{%s}")
+                   ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                   ("\\paragraph{%s}" . "\\paragraph*{%s}")
+                   ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 
 (add-to-list 'org-latex-classes
-	     '("dcthesis"
-	       "[NO-DEFAULT-PACKAGES]
+             '("dcthesis"
+               "[NO-DEFAULT-PACKAGES]
 [NO-PACKAGES]"
-	       ("\\chapter{%s}" . "\\chapter*{%s}")
-	       ("\\section{%s}" . "\\section*{%s}")
-	       ("\\subsection{%s}" . "\\subsection*{%s}")
-	       ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-	       ("\\paragraph{%s}" . "\\paragraph*{%s}")
-	       ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+               ("\\chapter{%s}" . "\\chapter*{%s}")
+               ("\\section{%s}" . "\\section*{%s}")
+               ("\\subsection{%s}" . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+               ("\\paragraph{%s}" . "\\paragraph*{%s}")
+               ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 
 (add-to-list 'org-latex-classes
-	     '("ametsoc"
-	       "[NO-DEFAULT-PACKAGES]
+             '("ametsoc"
+               "[NO-DEFAULT-PACKAGES]
 [NO-PACKAGES]
 \\documentclass{ametsoc}
 \\usepackage[T1]{fontenc}
@@ -87,15 +87,15 @@
 \\sisetup{detect-all = true, separate-uncertainty = true, list-units=single, range-units=single, range-phrase = --, per-mode=reciprocal, retain-unity-mantissa=false }
 \\bibpunct{(}{)}{;}{a}{}{,}
 [EXTRA]"
-	       ("\\section{%s}" . "\\section*{%s}")
-	       ("\\subsection{%s}" . "\\subsection*{%s}")
-	       ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-	       ("\\paragraph{%s}" . "\\paragraph*{%s}")
-	       ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+               ("\\section{%s}" . "\\section*{%s}")
+               ("\\subsection{%s}" . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+               ("\\paragraph{%s}" . "\\paragraph*{%s}")
+               ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 
 (add-to-list 'org-latex-classes
-	     '("JMR-review"
-	       "[NO-DEFAULT-PACKAGES]
+             '("JMR-review"
+               "[NO-DEFAULT-PACKAGES]
 [NO-PACKAGES]
 \\documentclass[12pt,titlepage]{article}
 \\usepackage{endfloat}
@@ -120,10 +120,10 @@
 \\sisetup{detect-all = true, separate-uncertainty = true, list-units=single, range-units=single, range-phrase = --, per-mode=reciprocal, retain-unity-mantissa=false }
 \\usepackage{JMR}
 [EXTRA]"
-	       ("\\section{%s}" . "\\section*{%s}")
-	       ("\\subsection{%s}" . "\\subsection*{%s}")
-	       ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-	       ("\\paragraph{%s}" . "\\paragraph*{%s}")
-	       ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+               ("\\section{%s}" . "\\section*{%s}")
+               ("\\subsection{%s}" . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+               ("\\paragraph{%s}" . "\\paragraph*{%s}")
+               ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 
 (provide 'dc-ox-latex-classes)

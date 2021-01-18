@@ -11,29 +11,29 @@ is already narrowed."
   (interactive "P")
   (declare (interactive-only))
   (cond ((and (buffer-narrowed-p) (not p)) (widen))
-	((region-active-p)
-	 (narrow-to-region (region-beginning)
-			   (region-end)))
-	((derived-mode-p 'org-mode)
-	 ;; `org-edit-src-code' is not a real narrowing
-	 ;; command. Remove this first conditional if
-	 ;; you don't want it.
-	 (cond ((ignore-errors (org-edit-src-code) t)
-		(delete-other-windows))
-	       ((ignore-errors (org-narrow-to-block) t))
-	       (t (org-narrow-to-subtree))))
-	((derived-mode-p 'latex-mode)
-	 (LaTeX-narrow-to-environment))
-	(t (narrow-to-defun))))
+        ((region-active-p)
+         (narrow-to-region (region-beginning)
+                           (region-end)))
+        ((derived-mode-p 'org-mode)
+         ;; `org-edit-src-code' is not a real narrowing
+         ;; command. Remove this first conditional if
+         ;; you don't want it.
+         (cond ((ignore-errors (org-edit-src-code) t)
+                (delete-other-windows))
+               ((ignore-errors (org-narrow-to-block) t))
+               (t (org-narrow-to-subtree))))
+        ((derived-mode-p 'latex-mode)
+         (LaTeX-narrow-to-environment))
+        (t (narrow-to-defun))))
 
 ;; This line actually replaces Emacs' entire narrowing
 ;; keymap, that's how much I like this command. Only
 ;; copy it if that's what you want.
 (define-key ctl-x-map "n" #'narrow-or-widen-dwim)
 (add-hook 'LaTeX-mode-hook
-	  (lambda ()
-	    (define-key LaTeX-mode-map "\C-xnn"
-	      nil)))
+          (lambda ()
+            (define-key LaTeX-mode-map "\C-xnn"
+              nil)))
 
 ;; Maybe not when I program elisp, since that's sexp-based, but for other programming languages these two come in very handy. They simply move the current line one step up or down.
 (defun move-line-down ()
@@ -85,11 +85,11 @@ is already narrowed."
   (if (= 0 (length isearch-string))
       (ding)
     (setq isearch-string
-	  (substring isearch-string
-		     0
-		     (or (isearch-fail-pos) (1- (length isearch-string)))))
+          (substring isearch-string
+                     0
+                     (or (isearch-fail-pos) (1- (length isearch-string)))))
     (setq isearch-message
-	  (mapconcat #'isearch-text-char-description isearch-string "")))
+          (mapconcat #'isearch-text-char-description isearch-string "")))
   (if isearch-other-end (goto-char isearch-other-end))
   (isearch-search)
   (isearch-push-state)

@@ -10,8 +10,8 @@
   (load-theme 'solarized-light t)
   (load-theme 'solarized-dark t)
   (setq solarized-use-less-bold t
-	solarized-use-more-italic nil
-	solarized-use-variable-pitch t)
+        solarized-use-more-italic nil
+        solarized-use-variable-pitch t)
   (let ((line (face-attribute 'mode-line :underline)))
     (set-face-attribute 'mode-line          nil :overline   line)
     (set-face-attribute 'mode-line-inactive nil :overline   line)
@@ -52,16 +52,16 @@
   (interactive)
   (dc/theme-changes)
   (set-face-attribute 'default nil
-		      :inherit 'fixed-pitch
-		      :foreground "black"))
+                      :inherit 'fixed-pitch
+                      :foreground "black"))
   ;; :foreground "#21505a")
 
 (defun dc/dark-theme-changes ()
   (interactive)
   (dc/theme-changes)
   (set-face-attribute 'default nil
-		      :inherit 'fixed-pitch
-		      :foreground "white"))
+                      :inherit 'fixed-pitch
+                      :foreground "white"))
   ;; :foreground "#cccccc")
 
 (defun dc/theme-changes ()
@@ -71,56 +71,56 @@
 
   (when (eq system-type 'darwin)
     (set-face-attribute 'default nil
-			:height 120)
+                        :height 120)
 
     (set-face-attribute 'fixed-pitch nil
-			:inherit 'default
-			:family "Monaco")
+                        :inherit 'default
+                        :family "Monaco")
 
     (set-face-attribute 'variable-pitch nil
-			:inherit 'default
-			:family "Avenir"
-			:weight 'regular))
+                        :inherit 'default
+                        :family "Avenir"
+                        :weight 'regular))
 
   (when (eq window-system 'x)
     (set-face-attribute 'fixed-pitch nil
-			:family "mononoki"
-			:height 120)
+                        :family "mononoki"
+                        :height 120)
     (set-face-attribute 'variable-pitch nil
-			:family "CMU Sans Serif"
-			:weight 'regular
-			:height 140))
+                        :family "CMU Sans Serif"
+                        :weight 'regular
+                        :height 140))
 
   ;; (set-face-attribute 'hl-line nil
-  ;;  		      :foreground nil
-  ;; 		      :background "#eee8d5")
+  ;;                  :foreground nil
+  ;;                  :background "#eee8d5")
 
   (set-face-attribute 'header-line nil
-		      :background nil
-		      :inherit nil)
+                      :background nil
+                      :inherit nil)
 
   (set-face-attribute 'cursor nil
-		      :foreground "black"
-		      :background nil
-		      :inherit nil)
+                      :foreground "black"
+                      :background nil
+                      :inherit nil)
 
   (set-face-attribute 'font-lock-constant-face nil
-		      :bold nil)
+                      :bold nil)
 
   (set-face-attribute 'font-lock-keyword-face nil
-		      :bold nil)
+                      :bold nil)
 
   (set-face-attribute 'font-lock-comment-face nil
-		      :inherit 'fixed-pitch)
+                      :inherit 'fixed-pitch)
 
   (set-face-attribute 'font-lock-builtin-face nil
-		      :foreground "#b58900"
-		      :bold nil)
+                      :foreground "#b58900"
+                      :bold nil)
 
   (set-face-attribute 'tooltip nil
-		      :inherit 'fixed-pitch
-		      :foreground "#586e75"
-		      :background "#eee8d5"))
+                      :inherit 'fixed-pitch
+                      :foreground "#586e75"
+                      :background "#eee8d5"))
 
 (use-package apropospriate-theme
   :disabled)

@@ -47,7 +47,7 @@
 (global-set-key (kbd "M-*") 'replace-regexp)
 ;; below works even when kill-this-buffer doesn't
 (global-set-key (kbd "C-x k")
-		(lambda () (interactive) (kill-buffer (current-buffer))))
+                (lambda () (interactive) (kill-buffer (current-buffer))))
 
 (global-set-key (kbd "s-<left>") 'previous-buffer)
 (global-set-key (kbd "s-<right>") 'next-buffer)

@@ -87,28 +87,28 @@ Argument KEY is the bibtex key."
 ;; (use-package! org
 ;; ;;   :commands (scimax/org-return org-babel-lob-ingest)
 ;; ;;   :bind (:map dc-bindings-map
-;; ;; 	      ("C-c c" . org-capture)
-;; ;; 	      ("C-c b" . org-iswitchb)
-;; ;; 	      ("C-c l" . org-lint)
-;; ;; 	      :map org-mode-map
-;; ;; 	      ("C-c C-x l" . org-toggle-latex-fragment)
-;; ;; 	      ("C-c C-x C-l" . org-toggle-latex-fragment)
-;; ;; 	      ("C-c a" . org-babel-execute-to-point)
-;; ;; 	      ("RET" . scimax/org-return)
-;; ;; 	      ("s-j" . org-babel-next-src-block)
-;; ;; 	      ("s-k" . org-babel-previous-src-block)
-;; ;; 	      ("s-l" . org-edit-src-code)
-;; ;; 	      ("s-h" . scimax-split-src-block)
-;; ;; 	      ("s-g" . dc/org-babel-execute-named-block)
-;; ;; 	      ("C-c C-q" . dc/org-babel-execute-current-block-qt)
-;; ;; 	      ("C-c C-i" . dc/org-babel-execute-current-block-inline)
-;; ;; 	      ("C-c C-v g" . dc/org-babel-execute-named-block)
-;; ;; 	      ("C-c C-v C-g" . dc/org-babel-execute-named-block)
-;; ;; 	      ("C-c C-p" . dc/org-babel-execute-current-block-in-shell)
-;; ;; 	      :map org-src-mode-map
-;; ;; 	      ("s-l" . org-edit-src-exit)
-;; ;; 	      :map org-mode-map
-;; ;; 	      ("RET" . scimax/org-return))
+;; ;;         ("C-c c" . org-capture)
+;; ;;         ("C-c b" . org-iswitchb)
+;; ;;         ("C-c l" . org-lint)
+;; ;;         :map org-mode-map
+;; ;;         ("C-c C-x l" . org-toggle-latex-fragment)
+;; ;;         ("C-c C-x C-l" . org-toggle-latex-fragment)
+;; ;;         ("C-c a" . org-babel-execute-to-point)
+;; ;;         ("RET" . scimax/org-return)
+;; ;;         ("s-j" . org-babel-next-src-block)
+;; ;;         ("s-k" . org-babel-previous-src-block)
+;; ;;         ("s-l" . org-edit-src-code)
+;; ;;         ("s-h" . scimax-split-src-block)
+;; ;;         ("s-g" . dc/org-babel-execute-named-block)
+;; ;;         ("C-c C-q" . dc/org-babel-execute-current-block-qt)
+;; ;;         ("C-c C-i" . dc/org-babel-execute-current-block-inline)
+;; ;;         ("C-c C-v g" . dc/org-babel-execute-named-block)
+;; ;;         ("C-c C-v C-g" . dc/org-babel-execute-named-block)
+;; ;;         ("C-c C-p" . dc/org-babel-execute-current-block-in-shell)
+;; ;;         :map org-src-mode-map
+;; ;;         ("s-l" . org-edit-src-exit)
+;; ;;         :map org-mode-map
+;; ;;         ("RET" . scimax/org-return))
 ;;    :config
 ;; ;;   ;;use org mode for eml files (useful for thunderbird plugin)
 ;; ;;   (add-to-list 'auto-mode-alist '("\\.eml\\'" . org-mode))
@@ -160,8 +160,8 @@ Argument KEY is the bibtex key."
 ;; ;;     (defun org-self-insert-or-less ()
 ;; ;;       (interactive)
 ;; ;;       (if (looking-back "^")
-;; ;; 	  (hydra-org-template/body)
-;; ;; 	(self-insert-command 1))))
+;; ;;     (hydra-org-template/body)
+;; ;;   (self-insert-command 1))))
 
 ;; ;;   (require 'ox-extra)
 ;; ;;   (ox-extras-activate '(latex-header-blocks ignore-headlines))
@@ -173,131 +173,131 @@ Argument KEY is the bibtex key."
 ;; ;; Use a prefix arg to get regular RET. "
 ;; ;;     (interactive "P")
 ;; ;;     (if ignore
-;; ;; 	(org-return)
+;; ;;   (org-return)
 ;; ;;       (cond
 
 ;; ;;        ((eq 'line-break (car (org-element-context)))
-;; ;; 	(org-return-indent))
+;; ;;   (org-return-indent))
 
 ;; ;;        ;; Open links like usual, unless point is at the end of a line.
 ;; ;;        ;; and if at beginning of line, just press enter.
 ;; ;;        ((or (and (eq 'link (car (org-element-context))) (not (eolp)))
-;; ;; 	    (bolp))
-;; ;; 	(org-return))
+;; ;;       (bolp))
+;; ;;   (org-return))
 
 ;; ;;        ;; It doesn't make sense to add headings in inline tasks. Thanks Anders
 ;; ;;        ;; Johansson!
 ;; ;;        ((org-inlinetask-in-task-p)
-;; ;; 	(org-return))
+;; ;;   (org-return))
 
 ;; ;;        ;; checkboxes - add new or delete empty
 ;; ;;        ((org-at-item-checkbox-p)
-;; ;; 	(cond
-;; ;; 	 ;; at the end of a line.
-;; ;; 	 ((and (eolp)
-;; ;; 	       (not (eq 'item (car (org-element-context)))))
-;; ;; 	  (org-insert-todo-heading nil))
-;; ;; 	 ;; no content, delete
-;; ;; 	 ((and (eolp) (eq 'item (car (org-element-context))))
-;; ;; 	  (setf (buffer-substring (line-beginning-position) (point)) ""))
-;; ;; 	 ((eq 'paragraph (car (org-element-context)))
-;; ;; 	  (goto-char (org-element-property :end (org-element-context)))
-;; ;; 	  (org-insert-todo-heading nil))
-;; ;; 	 (t
-;; ;; 	  (org-return))))
+;; ;;   (cond
+;; ;;    ;; at the end of a line.
+;; ;;    ((and (eolp)
+;; ;;          (not (eq 'item (car (org-element-context)))))
+;; ;;     (org-insert-todo-heading nil))
+;; ;;    ;; no content, delete
+;; ;;    ((and (eolp) (eq 'item (car (org-element-context))))
+;; ;;     (setf (buffer-substring (line-beginning-position) (point)) ""))
+;; ;;    ((eq 'paragraph (car (org-element-context)))
+;; ;;     (goto-char (org-element-property :end (org-element-context)))
+;; ;;     (org-insert-todo-heading nil))
+;; ;;    (t
+;; ;;     (org-return))))
 
 ;; ;;        ;; lists end with two blank lines, so we need to make sure we are also not
 ;; ;;        ;; at the beginning of a line to avoid a loop where a new entry gets
 ;; ;;        ;; created with only one blank line.
 ;; ;;        ((org-in-item-p)
-;; ;; 	(cond
-;; ;; 	 ;; empty definition list
-;; ;; 	 ((and (looking-at " ::")
-;; ;; 	       (looking-back "- " 3))
-;; ;; 	  (beginning-of-line)
-;; ;; 	  (delete-region (line-beginning-position) (line-end-position)))
-;; ;; 	 ;; empty item
-;; ;; 	 ((and (looking-at "$")
-;; ;; 	       (looking-back "- " 3))
-;; ;; 	  (beginning-of-line)
-;; ;; 	  (delete-region (line-beginning-position) (line-end-position)))
-;; ;; 	 ;; numbered list
-;; ;; 	 ((and (looking-at "$")
-;; ;; 	       (looking-back "[0-9]+. " (line-beginning-position)))
-;; ;; 	  (beginning-of-line)
-;; ;; 	  (delete-region (line-beginning-position) (line-end-position)))
-;; ;; 	 ;; insert new item
-;; ;; 	 (t
-;; ;; 	  (end-of-line)
-;; ;; 	  (org-insert-item))))
+;; ;;   (cond
+;; ;;    ;; empty definition list
+;; ;;    ((and (looking-at " ::")
+;; ;;          (looking-back "- " 3))
+;; ;;     (beginning-of-line)
+;; ;;     (delete-region (line-beginning-position) (line-end-position)))
+;; ;;    ;; empty item
+;; ;;    ((and (looking-at "$")
+;; ;;          (looking-back "- " 3))
+;; ;;     (beginning-of-line)
+;; ;;     (delete-region (line-beginning-position) (line-end-position)))
+;; ;;    ;; numbered list
+;; ;;    ((and (looking-at "$")
+;; ;;          (looking-back "[0-9]+. " (line-beginning-position)))
+;; ;;     (beginning-of-line)
+;; ;;     (delete-region (line-beginning-position) (line-end-position)))
+;; ;;    ;; insert new item
+;; ;;    (t
+;; ;;     (end-of-line)
+;; ;;     (org-insert-item))))
 
 ;; ;;        ;; org-heading
 ;; ;;        ((org-at-heading-p)
-;; ;; 	(if (not (string= "" (org-element-property :title (org-element-context))))
-;; ;; 	    (progn
-;; ;; 	      ;; Go to end of subtree suggested by Pablo GG on Disqus post.
-;; ;; 	      (org-end-of-subtree)
-;; ;; 	      (org-insert-heading-respect-content)
-;; ;; 	      (outline-show-entry))
-;; ;; 	  ;; The heading was empty, so we delete it
-;; ;; 	  (beginning-of-line)
-;; ;; 	  (setf (buffer-substring
-;; ;; 		 (line-beginning-position) (line-end-position)) "")))
+;; ;;   (if (not (string= "" (org-element-property :title (org-element-context))))
+;; ;;       (progn
+;; ;;         ;; Go to end of subtree suggested by Pablo GG on Disqus post.
+;; ;;         (org-end-of-subtree)
+;; ;;         (org-insert-heading-respect-content)
+;; ;;         (outline-show-entry))
+;; ;;     ;; The heading was empty, so we delete it
+;; ;;     (beginning-of-line)
+;; ;;     (setf (buffer-substring
+;; ;;            (line-beginning-position) (line-end-position)) "")))
 
 ;; ;;        ;; tables
 ;; ;;        ((org-at-table-p)
-;; ;; 	(if (-any?
-;; ;; 	     (lambda (x) (not (string= "" x)))
-;; ;; 	     (nth
-;; ;; 	      (- (org-table-current-dline) 1)
-;; ;; 	      (remove 'hline (org-table-to-lisp))))
-;; ;; 	    (org-return)
-;; ;; 	  ;; empty row
-;; ;; 	  (beginning-of-line)
-;; ;; 	  (setf (buffer-substring
-;; ;; 		 (line-beginning-position) (line-end-position)) "")
-;; ;; 	  (org-return)))
+;; ;;   (if (-any?
+;; ;;        (lambda (x) (not (string= "" x)))
+;; ;;        (nth
+;; ;;         (- (org-table-current-dline) 1)
+;; ;;         (remove 'hline (org-table-to-lisp))))
+;; ;;       (org-return)
+;; ;;     ;; empty row
+;; ;;     (beginning-of-line)
+;; ;;     (setf (buffer-substring
+;; ;;            (line-beginning-position) (line-end-position)) "")
+;; ;;     (org-return)))
 
 ;; ;;        ;; fall-through case
 ;; ;;        (t
-;; ;; 	(org-return)))))
+;; ;;   (org-return)))))
 
 ;; ;;   (defun ora-cap-filesystem ()
 ;; ;;     (let (path)
 ;; ;;       (when (setq path (ffap-string-at-point))
-;; ;; 	(let ((compl
-;; ;; 	       (all-completions path #'read-file-name-internal)))
-;; ;; 	  (when compl
-;; ;; 	    (let ((offset (ivy-completion-common-length (car compl))))
-;; ;; 	      (list (- (point) offset) (point) compl)))))))
+;; ;;   (let ((compl
+;; ;;          (all-completions path #'read-file-name-internal)))
+;; ;;     (when compl
+;; ;;       (let ((offset (ivy-completion-common-length (car compl))))
+;; ;;         (list (- (point) offset) (point) compl)))))))
 
 ;; ;;   (defun org-completion-refs ()
 ;; ;;     (when (looking-back "\\\\\\(?:ref\\|label\\){\\([^\n{}]\\)*")
 ;; ;;       (let (cands beg end)
-;; ;; 	(save-excursion
-;; ;; 	  (goto-char (point-min))
-;; ;; 	  (while (re-search-forward "\\label{\\([^}]+\\)}" nil t)
-;; ;; 	    (push (match-string-no-properties 1) cands)))
-;; ;; 	(save-excursion
-;; ;; 	  (up-list)
-;; ;; 	  (setq end (1- (point)))
-;; ;; 	  (backward-list)
-;; ;; 	  (setq beg (1+ (point))))
-;; ;; 	(list beg end
-;; ;; 	      (delete (buffer-substring-no-properties beg end)
-;; ;; 		      (nreverse cands))))))
+;; ;;   (save-excursion
+;; ;;     (goto-char (point-min))
+;; ;;     (while (re-search-forward "\\label{\\([^}]+\\)}" nil t)
+;; ;;       (push (match-string-no-properties 1) cands)))
+;; ;;   (save-excursion
+;; ;;     (up-list)
+;; ;;     (setq end (1- (point)))
+;; ;;     (backward-list)
+;; ;;     (setq beg (1+ (point))))
+;; ;;   (list beg end
+;; ;;         (delete (buffer-substring-no-properties beg end)
+;; ;;                 (nreverse cands))))))
 
 ;; ;;   (defun org-completion-symbols ()
 ;; ;;     (when (looking-back "=[a-zA-Z]+")
 ;; ;;       (let (cands)
-;; ;; 	(save-match-data
-;; ;; 	  (save-excursion
-;; ;; 	    (goto-char (point-min))
-;; ;; 	    (while (re-search-forward "=\\([a-zA-Z]+\\)=" nil t)
-;; ;; 	      (cl-pushnew (match-string-no-properties 0) cands :test 'equal))
-;; ;; 	    cands))
-;; ;; 	(when cands
-;; ;; 	  (list (match-beginning 0) (match-end 0) cands)))))
+;; ;;   (save-match-data
+;; ;;     (save-excursion
+;; ;;       (goto-char (point-min))
+;; ;;       (while (re-search-forward "=\\([a-zA-Z]+\\)=" nil t)
+;; ;;         (cl-pushnew (match-string-no-properties 0) cands :test 'equal))
+;; ;;       cands))
+;; ;;   (when cands
+;; ;;     (list (match-beginning 0) (match-end 0) cands)))))
 
 ;; ;;   ;; make prettify-symbols-mode work for latex in org files
 ;; ;;   ;; from https://emacs.stackexchange.com/questions/33797/use-literal-greek-characters-in-latex-fragments-in-org-mode
@@ -308,21 +308,21 @@ Argument KEY is the bibtex key."
 ;; ;; applying latex prettifycations in org mode buffers."
 ;; ;;     ;; Check that the chars should really be composed into a symbol.
 ;; ;;     (let* ((syntaxes-beg (if (memq (char-syntax (char-after start)) '(?w ?_))
-;; ;; 			     '(?w ?_) '(?. ?\\)))
-;; ;; 	   (syntaxes-end (if (memq (char-syntax (char-before end)) '(?w ?_))
-;; ;; 			     '(?w ?_) '(?. ?\\))))
+;; ;;                        '(?w ?_) '(?. ?\\)))
+;; ;;      (syntaxes-end (if (memq (char-syntax (char-before end)) '(?w ?_))
+;; ;;                        '(?w ?_) '(?. ?\\))))
 ;; ;;       (not (or
-;; ;; 	    (and
-;; ;; 	     ;; we don't want a $ before to stop prettification
-;; ;; 	     ;; or is for the case the char before does not exist (beginning of buffer)
-;; ;; 	     (/= (or (char-before start) ?$) ?$)
-;; ;; 	     (memq (char-syntax (or (char-before start) ?\s)) syntaxes-beg))
-;; ;; 	    (and
-;; ;; 	     ;; we don't want a $ after to stop prettification
-;; ;; 	     ;; or is for the case the char after does not exist (end of buffer)
-;; ;; 	     (/= (or (char-after end) ?$) ?$)
-;; ;; 	     (memq (char-syntax (or (char-after end) ?\s)) syntaxes-end))
-;; ;; 	    (nth 8 (syntax-ppss))))))
+;; ;;       (and
+;; ;;        ;; we don't want a $ before to stop prettification
+;; ;;        ;; or is for the case the char before does not exist (beginning of buffer)
+;; ;;        (/= (or (char-before start) ?$) ?$)
+;; ;;        (memq (char-syntax (or (char-before start) ?\s)) syntaxes-beg))
+;; ;;       (and
+;; ;;        ;; we don't want a $ after to stop prettification
+;; ;;        ;; or is for the case the char after does not exist (end of buffer)
+;; ;;        (/= (or (char-after end) ?$) ?$)
+;; ;;        (memq (char-syntax (or (char-after end) ?\s)) syntaxes-end))
+;; ;;       (nth 8 (syntax-ppss))))))
 
 ;; ;;   ;; remove comments from org document for use with export hook
 ;; ;;   ;; https://emacs.stackexchange.com/questions/22574/orgmode-export-how-to-prevent-a-new-line-for-comment-lines
@@ -335,92 +335,92 @@ Argument KEY is the bibtex key."
 ;; (defun dc/org-theme ()
 ;;   (interactive)
 ;;   (set-face-attribute 'org-level-1 nil
-;; 		      :inherit 'variable-pitch
-;; 		      :weight 'semibold
-;; 		      :height 1.25)
+;;                    :inherit 'variable-pitch
+;;                    :weight 'semibold
+;;                    :height 1.25)
 ;;   (set-face-attribute 'org-level-2 nil
-;;   		      :inherit 'variable-pitch
-;; 		      :slant 'italic
-;; 		      :weight 'medium
-;; 		      :height 1.15)
+;;                    :inherit 'variable-pitch
+;;                    :slant 'italic
+;;                    :weight 'medium
+;;                    :height 1.15)
 ;;   (set-face-attribute 'org-level-3 nil
-;;   		      :inherit 'variable-pitch
-;; 		      :weight 'semibold
-;; 		      :height 1.05)
+;;                    :inherit 'variable-pitch
+;;                    :weight 'semibold
+;;                    :height 1.05)
 ;;   (set-face-attribute 'org-level-4 nil
-;;   		      :inherit 'variable-pitch
-;; 		      :weight 'bold
-;; 		      :height 1.05)
+;;                    :inherit 'variable-pitch
+;;                    :weight 'bold
+;;                    :height 1.05)
 ;;   (set-face-attribute 'org-level-5 nil
-;;   		      :inherit 'variable-pitch
-;; 		      :weight 'bold
-;; 		      :height 1.05)
+;;                    :inherit 'variable-pitch
+;;                    :weight 'bold
+;;                    :height 1.05)
 ;;   (set-face-attribute 'org-level-6 nil
-;;   		      :inherit 'variable-pitch
-;; 		      :weight 'bold
-;; 		      :height 1.05)
+;;                    :inherit 'variable-pitch
+;;                    :weight 'bold
+;;                    :height 1.05)
 ;;   (set-face-attribute 'org-level-7 nil
-;;   		      :inherit 'variable-pitch
-;; 		      :weight 'bold
-;; 		      :height 1.05)
+;;                    :inherit 'variable-pitch
+;;                    :weight 'bold
+;;                    :height 1.05)
 ;;   (set-face-attribute 'org-link nil
-;; 		      :inherit 'fixed-pitch
-;; 		      :underline t
-;; 		      ) ; links are only underlined
+;;                    :inherit 'fixed-pitch
+;;                    :underline t
+;;                    ) ; links are only underlined
 ;;   ;; footnotes shouldn't be highlighted
 ;;   (set-face-attribute 'org-footnote nil
-;; 		      :underline nil
-;; 		      :inherit '(font-lock-comment-face org-foreground))
+;;                    :underline nil
+;;                    :inherit '(font-lock-comment-face org-foreground))
 ;;   (set-face-attribute 'org-checkbox nil
-;; 		      :inherit '(font-lock-comment-face)
-;; 		      :background nil
-;; 		      :weight 'light
-;; 		      :box nil)
+;;                    :inherit '(font-lock-comment-face)
+;;                    :background nil
+;;                    :weight 'light
+;;                    :box nil)
 ;;   (set-face-attribute 'org-code nil
-;; 		      :inherit 'fixed-pitch
-;; 		      :foreground "#286db2"
-;; 		      :background nil)
+;;                    :inherit 'fixed-pitch
+;;                    :foreground "#286db2"
+;;                    :background nil)
 ;;   (set-face-attribute 'org-todo nil
-;; 		      :weight 'normal)
+;;                    :weight 'normal)
 ;;   (set-face-attribute 'org-done nil
-;; 		      :weight 'normal)
+;;                    :weight 'normal)
 ;;   (set-face-attribute 'org-block nil
-;; 		      :inherit 'fixed-pitch
-;; 		      :background nil)
+;;                    :inherit 'fixed-pitch
+;;                    :background nil)
 ;;   (set-face-attribute 'org-block-end-line nil
-;; 		      :inherit 'org-meta-line)
+;;                    :inherit 'org-meta-line)
 ;;   (set-face-attribute 'org-target nil
-;; 		      :inherit 'fixed-pitch
-;; 		      :foreground "#586e75"
-;; 		      :background nil)
+;;                    :inherit 'fixed-pitch
+;;                    :foreground "#586e75"
+;;                    :background nil)
 ;;   (set-face-attribute 'org-table nil
-;; 		      :inherit 'fixed-pitch
-;; 		      :background nil)
+;;                    :inherit 'fixed-pitch
+;;                    :background nil)
 ;;   (set-face-attribute 'org-date nil
-;; 		      :inherit 'org-link)
+;;                    :inherit 'org-link)
 ;;   (set-face-attribute 'org-latex-and-related nil
-;; 		      :foreground "#268bd2"
-;; 		      :family "CMU Bright"
-;; 		      :slant 'italic)
+;;                    :foreground "#268bd2"
+;;                    :family "CMU Bright"
+;;                    :slant 'italic)
 ;;   (set-face-attribute 'org-tag nil
-;; 		      :height 0.8
-;; 		      :inherit '(font-lock-comment-face
-;; 				 org-foreground
-;; 				 fixed-pitch))
+;;                    :height 0.8
+;;                    :inherit '(font-lock-comment-face
+;;                               org-foreground
+;;                               fixed-pitch))
 ;;   (set-face-attribute 'org-meta-line nil
-;; 		      :inherit 'fixed-pitch
-;; 		      :height 0.9)
+;;                    :inherit 'fixed-pitch
+;;                    :height 0.9)
 ;;   (set-face-attribute 'org-special-keyword nil
-;; 		      :inherit 'fixed-pitch
-;; 		      :height 0.9)
+;;                    :inherit 'fixed-pitch
+;;                    :height 0.9)
 ;;   (set-face-attribute 'org-property-value nil
-;; 		      :inherit 'fixed-pitch
-;; 		      :height 0.9)
+;;                    :inherit 'fixed-pitch
+;;                    :height 0.9)
 ;;   (set-face-attribute 'org-document-title nil
-;; 		      :weight 'bold)
+;;                    :weight 'bold)
 ;;   (set-face-attribute 'org-table nil
-;; 		      :inherit 'fixed-pitch
-;; 		      :height 0.9))
+;;                    :inherit 'fixed-pitch
+;;                    :height 0.9))
 
 ;; (defun my-org-mode-hook ()
 ;;   (visual-fill-column-mode)
@@ -428,9 +428,9 @@ Argument KEY is the bibtex key."
 ;;   (setq ispell-parser 'tex)
 ;;   (undo-tree-mode)
 ;;   (setq completion-at-point-functions
-;; 	'(org-completion-symbols
-;; 	  ora-cap-filesystem
-;; 	  org-completion-refs))
+;;      '(org-completion-symbols
+;;        ora-cap-filesystem
+;;        org-completion-refs))
 ;;   (org-bullets-mode t)
 ;;   (org-edit-latex-mode t)
 ;;   (dc/org-theme)
@@ -447,9 +447,9 @@ Argument KEY is the bibtex key."
 
 ;; ;; (use-package citeproc-org
 ;; ;;   :quelpa ((citeproc-org
-;; ;; 	    :fetcher github
-;; ;; 	    :repo "andras-simonyi/citeproc-org")
-;; ;; 	   :upgrade nil)
+;; ;;       :fetcher github
+;; ;;       :repo "andras-simonyi/citeproc-org")
+;; ;;      :upgrade nil)
 ;; ;;   :config
 ;; ;;   (citeproc-org-setup))
 
