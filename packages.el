@@ -16,9 +16,12 @@
 (package! poporg)
 (package! python-black)
 (package! wc-mode)
+(package! matlab-mode)
 
 ;;(package! undo-tree)
 (package! visual-fill-column)
+
+(package! atomic-chrome)
 
 ;; To install a package directly from a remote git repo, you must specify a
 ;; `:recipe'. You'll find documentation on what `:recipe' accepts here:

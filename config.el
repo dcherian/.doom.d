@@ -25,7 +25,8 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-nord)
+(setq doom-font (font-spec :family "Fira Code" :size 12))
+(setq doom-theme 'doom-henna)
 
 (setq-default line-spacing 5)
 (setq x-stretch-cursor nil)
@@ -38,6 +39,8 @@
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
+
+(setq dash-docs-docsets-path "~/docsets/")
 
 (global-set-key "\C-xw" 'delete-frame)
 (global-set-key "\C-c\C-r" 'eval-region)
@@ -56,6 +59,242 @@
 (global-set-key (kbd "<f11>") 'gud-step) ;; equiv matlab step in
 (global-set-key (kbd "<f7>") 'gud-next) ;; equiv matlab step 1
 (global-set-key (kbd "<f8>") 'gud-finish) ;; equiv matlab step out
+(use-package! wc-mode)
+
+(use-package! transpose-frame
+  :defer
+  :bind (:map dc/toggle-map
+         ("f" . transpose-frame)))
+
+(use-package! magit
+  :defer
+  :bind (:map dc-bindings-map
+         ("C-x g" . magit-status)
+         ("C-x l" . magit-log-buffer-file)
+         ("C-x d" . magit-log-trace-definition))
+  :config
+  (setq magit-repository-directories
+        '(("~/.emacs.d/" . 0)
+          ("~/dotfiles/" . 0)
+          ("~/pods/" . 3)
+          ("~/python/" . 2)
+          ("~/gits/" . 1)))
+
+  (add-to-list 'magit-section-initial-visibility-alist '(untracked . hide))
+
+  (add-to-list 'magit-buffer-log-args "--follow")
+  (magit-auto-revert-mode)
+  (setq vc-handled-backends nil))
+
+(use-package! counsel
+  :defer
+  :bind (:map dc-bindings-map
+         ("M-9" . counsel-semantic-or-imenu))
+  ;; (unbind-key "C-c C-l" shell-mode-map)
+  ;; (bind-key "C-c C-l" #'counsel-shell-history shell-mode-map)
+  )
+
+(use-package! crux
+  :defer
+  :bind (:map dc-bindings-map
+         ("C-a" . crux-move-beginning-of-line)
+         ("C-c s" . crux-transpose-windows)
+         ("C-c d" . crux-duplicate-current-line-or-region)
+         ("C-c D" . crux-delete-file-and-buffer)
+         ("C-c r" . crux-rename-file-and-buffer)
+         ("C-c I" . crux-find-user-init-file)
+         ("C-S-RET" . crux-smart-open-line-above)
+         ("S-RET" . crux-smart-open-line)
+         ("C-^" . crux-top-join-lines)
+         ("C-x C-i" . crux-ispell-word-then-abbrev))
+  :config
+  (setq save-abbrevs 'silently)
+  (setq-default abbrev-mode t))
+
+(use-package! comment-dwim-2
+  :defer
+  :bind (:map dc-bindings-map
+         ("C-;" . comment-dwim-2)))
+
+;; needs to be matlab not matlab-mode!
+;; this is because matlab.el is present, not matlab-mode.el
+(use-package! matlab
+  :defer
+  :commands dc/matlab-shell-other-window
+  :hook (matlab-shell . comint-read-input-ring)
+  :bind (:map matlab-mode-map
+              ("C-c C-m" . matlab-shell)
+              ("C-c C-a" . matlab-shell-run-cell)
+              ("C-c C-c" . matlab-shell-run-region-or-line)
+              ("C-c C-o" . dc/matlab-shell-other-window))
+  :config
+  (defun dc/matlab-shell-other-window ()
+    (interactive)
+    (other-window 1)
+    (matlab-shell))
+
+  (setq matlab-shell-command "matlab"
+        matlab-indent-function-body t
+        matlab-functions-have-end t
+        matlab-verify-on-save-flag nil
+        matlab-shell-command-switches '("-nodesktop -nosplash")
+        matlab-mode-verify-fix-functions nil
+        matlab-shell-history-file "~/.matlab/R2018a/history.m"))
+
+
+
+;; (autoload 'dired-toggle-read-only "dired" nil t)
+;;(define-key dc/toggle-map "w" #'whitespace-mode)
+;;
+(use-package! tramp
+  :defer
+  :config
+  (setq tramp-default-method "ssh")
+  (setq tramp-backup-directory-alist backup-directory-alist)
+  ;; (setq tramp-auto-save-directory autosave-dir)
+
+  (add-to-list 'password-word-equivalents "Token_Response")
+  (setq tramp-password-prompt-regexp
+        (format "^.*\\(%s\\).*:\^@? *"
+                (regexp-opt (or (bound-and-true-p password-word-equivalents)
+                                '("password" "passphrase"))))))
+
+;; (use-package! undo-tree
+;;   :bind (:map dc-bindings-map
+;;            ("M--" . undo-tree-undo)
+;;            ("M-=" . undo-tree-redo)
+;;            ("M-u" . undo-tree-visualize))
+;;   :config
+;;   (global-undo-tree-mode t))
+
+(use-package! projectile
+  :defer
+  :bind (:map projectile-mode-map
+         ("M-p" . projectile-command-map))
+  :config
+  (setq projectile-mode-line '(:eval (format " Proj[%s]" (projectile-project-name)))
+        projectile-sort-order 'access-time)
+  (setq projectile-enable-caching t)
+  (projectile-mode))
+
+(use-package! counsel-projectile
+  :defer
+  :bind (:map dc-bindings-map
+         ("C-c C-f" . counsel-projectile-find-file-dwim)
+        ;;            :map projectile-command-map
+        ;;            ("s" . counsel-projectile-ag)
+         )
+  :config
+  (setq projectile-completion-system 'counsel
+        projectile-switch-project-action 'counsel-projectile-find-file
+        projectile-switch-project-action 'counsel-projectile)
+  (counsel-projectile-mode))
+
+(use-package! poporg
+  :defer
+  :bind (:map dc-bindings-map
+         ("s-l" . 'poporg-dwim)))
+
+(use-package! ivy
+  :defer
+  :bind (:map dc-bindings-map
+         ("C-x b" . 'ivy-switch-buffer)))
+
+(use-package! org
+  :defer
+  :config
+  (setq org-startup-indented t
+        org-startup-with-inline-images "inlineimages"
+        org-hide-leading-stars t
+;;      org-return-follows-link t
+;;      org-footnote-define-inline t
+;;      org-special-ctrl-a/e t
+;;      org-special-ctrl-k t
+;;      org-ellipsis "…"
+;;      org-log-done t
+;;      org-catch-invisible-edits 'smart
+;;      org-list-allow-alphabetical t
+;;      org-hide-emphasis-markers nil
+        org-image-actual-width 680
+;;      org-export-in-background nil
+;;    org-src-fontify-natively 1
+;;      org-src-tab-acts-natively 1
+;;      org-src-preserve-indentation t
+;;      org-pretty-entities nil
+;;      org-pretty-entities-include-sub-superscripts t
+        org-export-dispatch-use-expert-ui t
+        org-export-time-stamp-file nil
+;;      fill-column 90
+;;      org-src-window-setup 'current-window
+;;      org-export-time-stamp-file nil
+        org-imenu-depth 3
+        )
+
+  (require 'ox-extra)
+  (require 'org-inlinetask)
+  (ox-extras-activate '(latex-header-blocks ignore-headlines))
+  ;; remove comments from org document for use with export hook
+  ;; https://emacs.stackexchange.com/questions/22574/orgmode-export-how-to-prevent-a-new-line-for-comment-lines
+  (defun delete-org-comments (backend)
+    (cl-loop for comment in (reverse (org-element-map (org-element-parse-buffer)
+                                      'comment 'identity))
+          do
+          (setf (buffer-substring (org-element-property :begin comment)
+                                  (org-element-property :end comment))
+                "")))
+  ;; add to export hook
+  (add-hook 'org-export-before-processing-hook 'delete-org-comments)
+
+   )
+
+(use-package! ox-latex
+  :after org
+  :config
+  (defun dc/org-latex-word-count ()
+    (interactive)
+    (org-latex-export-to-latex)
+    (shell-command (concat "texcount "
+                                        ; "uncomment then options go here "
+                           (file-name-sans-extension buffer-file-name)
+                           ".tex")))
+  (defun dc/org-latex-character-count ()
+    (interactive)
+    (org-latex-export-to-latex)
+    (shell-command (concat "texcount -char "
+                                        ; "uncomment then options go here "
+                           (file-name-sans-extension buffer-file-name)
+                           ".tex")))
+  (define-key org-mode-map "\C-cw" 'dc/org-latex-word-count)
+  (define-key org-mode-map "\C-cW" 'dc/org-latex-character-count)
+
+  (setq org-latex-hyperref-template nil
+        org-latex-listings t
+        org-latex-prefer-user-labels t
+        org-latex-tables-booktabs t
+        org-latex-table-scientific-notation nil
+        org-latex-compiler-file-string nil
+        org-latex-image-default-width "\\textwidth"
+        org-highlight-latex-and-related '(latex script entities))
+
+  (add-to-list 'org-latex-listings-langs '(ipython "Python"))
+
+  (setq org-latex-pdf-process
+        '("source ~/.bashrc; sed '/./,$!d' %f > %f.nolines; mv %f.nolines %f; latexmk %f; exiftool -overwrite_original -Producer=`git rev-parse HEAD` %b.pdf"))
+  (load! "lisp/dc-ox-latex-classes"))
+
+
+(use-package! visual-fill-column
+  :defer
+  :bind (:map dc/toggle-map
+         ("v" . visual-fill-column-mode))
+  :init
+  (setq visual-fill-column-center-text t
+        visual-fill-column-width 150)
+  (advice-add 'text-scale-adjust :after
+              #'visual-fill-column-adjust))
+
+
+
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
@@ -131,3 +370,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+(setq auth-sources
+    '((:source "~/.authinfo")))

@@ -57,7 +57,12 @@
   )
 
 ;; https://github.com/necaris/conda.el/issues/63
-(setq conda-anaconda-home "/home/deepak/miniconda3/")
+(setq conda-anaconda-home "/Users/dcherian/mambaforge/")
+
+(use-package! numpydoc
+  :after python
+  :bind (:map python-mode-map
+         ("C-c C-n" . numpydoc-generate)))
 
 ;; Package `anaconda-mode' seems to play well with Jupyter and adds the missing
 ;; eldoc and jump-to-definition functionalities without depending on the old
