@@ -89,6 +89,7 @@
 
        :os
        macos             ; MacOS-specific commands
+       tty               ; terminal support
 
        :tools
        ;;debugger          ; FIXME stepping through code, to help you add bugs
