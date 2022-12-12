@@ -82,6 +82,44 @@
 
   (add-to-list 'magit-section-initial-visibility-alist '(untracked . hide))
 
+  (defvar exp-feat/recent-branches (make-hash-table :test 'equal))
+
+  (defcustom exp-feat/recent-branches-limits 5
+    "Limits" :type 'integer :risky t)
+
+  (defun exp-feat/magit-insert-recent-branches nil
+    "Insert recent branches"
+    (let* ((dir (magit-toplevel))
+           (curr-branch (magit-get-current-branch))
+           (prev-branch (magit-get-previous-branch))
+           (rbs (--> (gethash dir exp-feat/recent-branches)
+                     (nconc (list prev-branch curr-branch) it)
+                     (-distinct it)
+                     (-filter (lambda (a) (and a (not (equal a curr-branch)))) it))))
+      (when rbs
+        (when (> (length rbs) exp-feat/recent-branches-limits)
+          (--> (1- exp-feat/recent-branches-limits)
+               (nthcdr it rbs)
+               (setcdr it nil)))
+        (puthash dir rbs exp-feat/recent-branches)
+        (magit-insert-section (rb "rb")
+          (magit-insert-heading "Recent branches")
+          (dolist (it-branch rbs)
+            (let ((output (magit-rev-format "%h %s" it-branch)))
+              (string-match "^\\([^ ]+\\) \\(.*\\)" output)
+              (magit-bind-match-strings (commit summary) output
+                (when (and t (equal summary ""))
+                  (setq summary "(no commit message)"))
+                (magit-insert-section (branch it-branch)
+                  (insert (propertize commit
+                                      'font-lock-face 'magit-hash) ?\s)
+                  (insert (propertize it-branch
+                                      'font-lock-face 'magit-branch-local) ?\s)
+                  (insert (funcall magit-log-format-message-function
+                                   it-branch summary) ?\n)))))))))
+
+  (magit-add-section-hook 'magit-status-sections-hook 'exp-feat/magit-insert-recent-branches 'append t)
+
   (add-to-list 'magit-buffer-log-args "--follow")
   (magit-auto-revert-mode)
   (setq vc-handled-backends nil))
