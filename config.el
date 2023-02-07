@@ -238,6 +238,17 @@
   :bind (:map dc-bindings-map
          ("C-x b" . 'ivy-switch-buffer)))
 
+(use-package! spell-fu
+  :config
+  (setq ispell-dictionary "english"
+        ispell-personal-dictionary "~/.doom.d/.pws")
+  )
+
+(use-package! goto-last-change
+  :defer
+    :bind (:map dc-bindings-map
+         ("C-x x" . 'goto-last-change)))
+
 (use-package! org
   :defer
   :config

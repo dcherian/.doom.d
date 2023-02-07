@@ -6,12 +6,13 @@
 ;; org-mode class for my latex style
 
 (use-package! org-ref
+  :defer
   :after org
   :bind (:map dc-bindings-map
          ("C-c [" . org-ref-insert-ref-link)
-         ("C-c ]" . org-ref-helm-insert-cite-link)
-         ("C-c \\" . org-ref-helm-insert-label-link))
-  :hook ((org-mode circadian-after-load-theme) . dc/org-ref-faces)
+         ("C-c ]" . org-ref-insert-cite-link)
+         ("C-c \\" . org-ref-insert-label-link))
+  ;; :hook ((org-mode circadian-after-load-theme) . dc/org-ref-faces)
   :config
   (defun dc/org-ref-faces ()
     (interactive)
@@ -27,11 +28,12 @@
   (unbind-key "C-<left>" org-ref-cite-keymap)
   (unbind-key "C-<right>" org-ref-cite-keymap)
 
-  (setq org-ref-notes-directory "~/Papers/notes/"
-        org-ref-bibliography-notes "~/org/papers.org"
-        org-ref-default-bibliography '("~/Papers/bibtexLibrary.bib")
-        org-ref-pdf-directory "~/Papers/"
-        org-ref-show-broken-links nil)
+  (setq bibtex-completion-notes-path "~/Papers/notes/"
+        ;; org-ref-bibliography-notes "~/org/papers.org"
+        bibtex-completion-bibliography '("~/Papers/bibtexLibrary.bib")
+        bibtex-completion-library-path "~/Papers/"
+        ;; org-ref-show-broken-links nil
+        )
 
   ;; make sure org-ref notes lines up with those from helm-BibTeX
   (setq org-ref-note-title-format
@@ -63,10 +65,10 @@ Argument KEY is the bibtex key."
               (let ((clean-field (replace-regexp-in-string "{\\|}\\|\\\\" "" e)))
                 (let ((first-file (car (split-string clean-field ";" t))))
                   (format (concat
-                           (file-name-as-directory org-ref-pdf-directory)
+                           (file-name-as-directory bibtex-completion-library-path)
                            (format "%s" first-file)))))
             (format (concat
-                     (file-name-as-directory org-ref-pdf-directory)
+                     (file-name-as-directory bibtex-completion-library-path)
                      "%s.pdf")
                     key))))))
 

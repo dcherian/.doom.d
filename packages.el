@@ -9,9 +9,11 @@
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 (package! crux)
 (package! comment-dwim-2)
+(package! goto-last-change)
 (package! transpose-frame)
 (package! orgalist)
 (package! org-ref)
+(package! ox-rst)
 (package! ivy-bibtex)
 (package! poporg)
 (package! python-black)
