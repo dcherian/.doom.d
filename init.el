@@ -105,9 +105,9 @@
         ;;pdf               ; pdf enhancements
         ;;rgb               ; creating color strings
        ;;taskrunner        ; taskrunner for all your projects
+       tree-sitter
         ;;tmux              ; an API for interacting with tmux
        ;;upload            ; map local to remote projects via ssh/ftp
-
        :lang
        emacs-lisp        ; drown in parentheses
        latex             ; writing papers in Emacs has never been so fun

@@ -74,9 +74,8 @@
          ("C-x d" . magit-log-trace-definition))
   :config
   (setq magit-repository-directories
-        '(("~/.emacs.d/" . 0)
+        '(("~/.doom.d/" . 0)
           ("~/dotfiles/" . 0)
-          ("~/pods/" . 3)
           ("~/python/" . 2)
           ("~/gits/" . 1)))
 
@@ -196,14 +195,6 @@
         (format "^.*\\(%s\\).*:\^@? *"
                 (regexp-opt (or (bound-and-true-p password-word-equivalents)
                                 '("password" "passphrase"))))))
-
-;; (use-package! undo-tree
-;;   :bind (:map dc-bindings-map
-;;            ("M--" . undo-tree-undo)
-;;            ("M-=" . undo-tree-redo)
-;;            ("M-u" . undo-tree-visualize))
-;;   :config
-;;   (global-undo-tree-mode t))
 
 (use-package! projectile
   :defer
