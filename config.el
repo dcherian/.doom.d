@@ -278,9 +278,6 @@
         org-imenu-depth 3
         )
 
-  (require 'ox-extra)
-  (require 'org-inlinetask)
-  (ox-extras-activate '(latex-header-blocks ignore-headlines))
   ;; remove comments from org document for use with export hook
   ;; https://emacs.stackexchange.com/questions/22574/orgmode-export-how-to-prevent-a-new-line-for-comment-lines
   (defun delete-org-comments (backend)
@@ -294,6 +291,17 @@
   (add-hook 'org-export-before-processing-hook 'delete-org-comments)
 
    )
+
+(use-package! ox-extra
+  :after org
+  :config
+  (ox-extras-activate '(ignore-headlines))
+  )
+
+(use-package! org-inlinetask
+  :after org
+  )
+
 
 (use-package! ox-latex
   :after org
@@ -423,3 +431,6 @@
 
 (setq auth-sources
     '((:source "~/.authinfo")))
+
+(after! org
+  (remove-hook 'after-save-hook #'+literate|recompile-maybe))
