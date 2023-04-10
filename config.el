@@ -42,6 +42,14 @@
 
 (setq dash-docs-docsets-path "~/docsets/")
 
+(setq auto-mode-alist (append '(
+                              ("\\.f\\'" . fortran-mode)
+                              ("\\.f77\\'" . fortran-mode)
+                              ("\\.f90\\'" . f90-mode)
+                              ("\\.F90\\'" . f90-mode)
+                              )
+                              auto-mode-alist))
+
 (global-set-key "\C-xw" 'delete-frame)
 (global-set-key "\C-c\C-r" 'eval-region)
 (global-set-key "\C-c\C-b" 'eval-buffer)
