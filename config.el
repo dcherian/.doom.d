@@ -26,7 +26,7 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 (setq doom-font (font-spec :family "Fira Code" :size 12))
-(setq doom-theme 'doom-henna)
+(setq doom-theme 'doom-wilmersdorf)
 
 (setq-default line-spacing 5)
 (setq x-stretch-cursor nil)
