@@ -204,20 +204,20 @@
   (setq projectile-mode-line '(:eval (format " Proj[%s]" (projectile-project-name)))
         projectile-sort-order 'access-time)
   (setq projectile-enable-caching t)
-  (projectile-mode))
+)
 
-(use-package! counsel-projectile
-  :defer
-  :bind (:map dc-bindings-map
-         ("C-c C-f" . counsel-projectile-find-file-dwim)
-        ;;            :map projectile-command-map
-        ;;            ("s" . counsel-projectile-ag)
-         )
-  :config
-  (setq projectile-completion-system 'counsel
-        projectile-switch-project-action 'counsel-projectile-find-file
-        projectile-switch-project-action 'counsel-projectile)
-  (counsel-projectile-mode))
+;; (use-package! counsel-projectile
+;;   :defer
+;;   :after counsel
+;;   :bind (:map dc-bindings-map
+;;          ("C-c C-f" . counsel-projectile-find-file)
+;;         ;;            :map projectile-command-map
+;;         ;;            ("s" . counsel-projectile-ag)
+;;          )
+;;   :config
+;;   (setq projectile-completion-system 'counsel
+;;         projectile-switch-project-action 'counsel-projectile)
+;;   (counsel-projectile-mode))
 
 (use-package! poporg
   :defer
