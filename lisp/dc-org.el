@@ -28,10 +28,10 @@
   (unbind-key "C-<left>" org-ref-cite-keymap)
   (unbind-key "C-<right>" org-ref-cite-keymap)
 
-  (setq bibtex-completion-notes-path "~/Papers/notes/"
+  (setq bibtex-completion-notes-path '("~/Papers/notes/")
         ;; org-ref-bibliography-notes "~/org/papers.org"
         bibtex-completion-bibliography '("~/Papers/bibtexLibrary.bib")
-        bibtex-completion-library-path "~/Papers/"
+        bibtex-completion-library-path '("~/Papers/")
         ;; org-ref-show-broken-links nil
         )
 

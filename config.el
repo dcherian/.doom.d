@@ -241,7 +241,7 @@
 (use-package! spell-fu
   :config
   (setq ispell-dictionary "english"
-        ispell-personal-dictionary "~/.doom.d/.pws")
+        ispell-personal-dictionary "~/.doom.d/dictionary.pws")
   )
 
 (use-package! goto-last-change
@@ -323,7 +323,9 @@
         org-latex-table-scientific-notation nil
         org-latex-compiler-file-string nil
         org-latex-image-default-width "\\textwidth"
-        org-highlight-latex-and-related '(latex script entities))
+        org-highlight-latex-and-related '(latex script entities)
+        org-cite-export-processors nil
+        )
 
   (add-to-list 'org-latex-listings-langs '(ipython "Python"))
 
